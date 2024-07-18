@@ -15,3 +15,7 @@ def determinar_mensaje(edad):
         return "Eres adulto."
     else:
         return "Eres adulto mayor."
+
+#Mostrar el Mensaje
+mensaje = determinar_mensaje(edad)
+st.write(mensaje)
