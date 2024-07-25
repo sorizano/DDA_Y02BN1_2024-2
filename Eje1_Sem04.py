@@ -40,4 +40,14 @@ if archivo is not None:
     #Guardar el resultado en un nuevo archivo Excel
     resultado_df = pd.DataFrame(list(total_ventas.items()), columns=['Producto', 'Total Ventas'])
     resultado_df.to_excel("total_ventas.xlsx", index=False)
-    st.success("Archivo procesado y guardado como total_ventas.xlsx")
+
+    #Mensaje de éxito
+    st.success("Archivo procesado y listo para descargar")
+
+    #Botón de descarga
+    st.download_button(
+        label = "Descargar archivo Excel",
+        data=resultado_df.to_excel(index=False),
+        file_name='Total_ventas.xlsx',
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
