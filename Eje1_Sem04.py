@@ -50,7 +50,7 @@ if archivo is not None:
     st.download_button(
         label="Descargar archivo CSV",
         data=csv,
-        file_name='Total_ventas.csv'
+        file_name='Total_ventas.csv',
         mime='text/csv'
     )
 
