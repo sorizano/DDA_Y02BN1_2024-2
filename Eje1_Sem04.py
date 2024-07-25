@@ -37,3 +37,7 @@ if archivo is not None:
 
     st.write(resultado)
 
+    #Guardar el resultado en un nuevo archivo Excel
+    resultado_df = pd.DataFrame(list(total_ventas.items()), columns=['Producto', 'Total Ventas'])
+    resultado_df.to_excel("total_ventas.xlsx", index=False)
+    st.success("Archivo procesado y guardado como total_ventas.xlsx")
