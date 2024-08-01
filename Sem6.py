@@ -21,3 +21,11 @@ st.title("CRUD con Streamlit y Supabase")
 
 menu = ["Ver", "Agregar"]
 choice = st.sidebar.selectbox("Menú", menu)
+
+if choice == "Ver":
+    st.subheader("Lista de estudiantes")
+    students = get_students()
+    student_count = count_students()
+    st.write(f"Cantidad total de estudiantes: {student_count}")
+    for student in students:
+        st.write(f"ID: {student['id']}, Nombre: {student['name']}, Edad: {student['age']}")
