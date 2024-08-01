@@ -2,8 +2,8 @@ import streamlit as st
 from supabase import create_client, Client
 
 #Configurar Supabase
-SUPABASE_URL = "https://dzrqlfnxxtompvovsiso.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cnFsZm54eHRvbXB2b3ZzaXNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI0NzMwMTUsImV4cCI6MjAzODA0OTAxNX0.j4JmBL6IKm1obWB29ytLOZq0_cIvZ8iRL3m3KSzZFQc"
+SUPABASE_URL = "https://clmdobighgagqdqwfclt.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsbWRvYmlnaGdhZ3FkcXdmY2x0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI0NzMzMDYsImV4cCI6MjAzODA0OTMwNn0.7pncUo2SvBwi1Jnxl863e9-omO8fGulmZC3_zhUVFTM"
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def get_students():
@@ -19,7 +19,7 @@ def add_student(name, age):
 
 st.title("CRUD con Streamlit y Supabase")
 
-menu = ["Ver", "Agregar"]
+menu = ["Ver", "Agregar", "Actualizar", "Eliminar"]
 choice = st.sidebar.selectbox("Menú", menu)
 
 if choice == "Ver":
@@ -29,3 +29,29 @@ if choice == "Ver":
     st.write(f"Cantidad total de estudiantes: {student_count}")
     for student in students:
         st.write(f"ID: {student['id']}, Nombre: {student['name']}, Edad: {student['age']}")
+
+elif choice =="Agregar":
+    st.subheader("Agregar Estudiante")
+    name = st.text_input("Nombre")
+    age = st.number_input("Edad", min_value=1, max_value=100)
+    if st.button("Agregar"):
+        add_student(name, age)
+        st.success("Estudiante agregado exitosamente")
+
+
+
+elif choice == "Actualizar":
+    st.subheader("Actualizar Estudiante")
+    student_id = st.number_input("ID del estudiante", min_value=1)
+    name = st.text_input("Nuevo Nombre")
+    age = st.number_input("Nueva Edad", min_value=1, max_value=100)
+    if st.button("Actualizar"):
+        update_student(student_id,name,age)
+        st.success("Estudiante actualizado exitosamente")
+
+elif choice == "Eliminar":
+    st.subheader("Eliminar Estudiante")
+    student_id = st.number_input("ID del estudiante", min_value=1)
+    if st.button("Eliminar"):
+        delete_student(student_id)
+        st.success("Estudiante eliminado exitosamente")
