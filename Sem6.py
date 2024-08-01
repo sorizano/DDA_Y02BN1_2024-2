@@ -17,6 +17,12 @@ def count_students():
 def add_student(name, age):
     supabase.table('students').insert({"name": name, "age":age}).execute()
 
+def update_student(student_id, name, age):
+    supabase.table('students').update({"name": name, "age":age}).eq("id", student_id).execute()
+
+def delete_student(student_id):
+    supabase.table('students').delete().eq("id", student_id).execute()
+
 
 def add_student(name, age):
     supabase.table('students').insert({"name": name, "age": age}).execute()
