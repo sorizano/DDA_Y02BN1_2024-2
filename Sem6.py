@@ -40,7 +40,7 @@ elif choice =="Agregar":
 
 
 
-elif choice == "Actualizar"
+elif choice == "Actualizar":
     st.subheader("Actualizar Estudiante")
     student_id = st.number_input("ID del estudiante", min_value=1)
     name = st.text_input("Nuevo Nombre")
@@ -49,7 +49,7 @@ elif choice == "Actualizar"
         update_student(student_id,name,age)
         st.success("Estudiante actualizado exitosamente")
 
-elif choice == "Eliminar"
+elif choice == "Eliminar":
     st.subheader("Eliminar Estudiante")
     student_id = st.number_input("ID del estudiante", min_value=1)
     if st.button("Eliminar"):
