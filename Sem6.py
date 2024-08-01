@@ -19,7 +19,7 @@ def add_student(name, age):
 
 st.title("CRUD con Streamlit y Supabase")
 
-menu = ["Ver", "Agregar"]
+menu = ["Ver", "Agregar", "Actualizar", "Eliminar"]
 choice = st.sidebar.selectbox("Menú", menu)
 
 if choice == "Ver":
@@ -29,3 +29,29 @@ if choice == "Ver":
     st.write(f"Cantidad total de estudiantes: {student_count}")
     for student in students:
         st.write(f"ID: {student['id']}, Nombre: {student['name']}, Edad: {student['age']}")
+
+elif choice =="Agregar":
+    st.subheader("Agregar Estudiante")
+    name = st.text_input("Nombre")
+    age = st.number_input("Edad", min_value=1, max_value=100)
+    if st.button("Agregar"):
+        add_student(name, age)
+        st.success("Estudiante agregado exitosamente")
+
+
+
+elif choice = "Actualizar"
+    st.subheader("Actualizar Estudiante")
+    student_id = st.number_input("ID del estudiante", min_value=1)
+    name = st.text_input("Nuevo Nombre")
+    age = st.number_input("Nueva Edad", min_value=1, max_value=100)
+    if st.button("Actualizar"):
+        update_student(student_id,name,age)
+        st.success("Estudiante actualizado exitosamente")
+
+elif choice == "Eliminar"
+    st.subheader("Eliminar Estudiante")
+    student_id = st.number_input("ID del estudiante", min_value=1)
+    if st.button("Eliminar"):
+        delete_student(student_id)
+        st.success("Estudiante eliminado exitosamente")
