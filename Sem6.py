@@ -1,5 +1,5 @@
 import streamlit as st
-from supabase import creatr_client, Client
+from supabase import create_client, Client
 
 #Configurar Supabase
 SUPABASE_URL = "https://dzrqlfnxxtompvovsiso.supabase.co"
