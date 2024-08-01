@@ -40,7 +40,7 @@ elif choice =="Agregar":
 
 
 
-elif choice = "Actualizar"
+elif choice == "Actualizar"
     st.subheader("Actualizar Estudiante")
     student_id = st.number_input("ID del estudiante", min_value=1)
     name = st.text_input("Nuevo Nombre")
