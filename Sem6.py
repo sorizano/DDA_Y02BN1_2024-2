@@ -15,6 +15,10 @@ def count_students():
     return response.count
 
 def add_student(name, age):
+    supabase.table('students').insert({"name": name, "age":age}).execute()
+
+
+def add_student(name, age):
     supabase.table('students').insert({"name": name, "age": age}).execute()
 
 st.title("CRUD con Streamlit y Supabase")
@@ -37,8 +41,6 @@ elif choice =="Agregar":
     if st.button("Agregar"):
         add_student(name, age)
         st.success("Estudiante agregado exitosamente")
-
-
 
 elif choice == "Actualizar":
     st.subheader("Actualizar Estudiante")
