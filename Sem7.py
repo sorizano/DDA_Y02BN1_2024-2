@@ -9,13 +9,13 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.title("Sistema de facturación")
 
-#Selección de operación
-option = st.selectbox(
-    '¿Qué operación desea realizar?',
-    ('Consultar Clientes', 'Consultar Productos', 'Generar Factura', 'Ver Facturas')
-)
+#Consulta de Clientes
+st.header("Lista de Clientes")
+clientes = supabase.table('Clientes').select('*').execute()
+df_clientes = pd.DataFrame(clientes.data)
 
-if option == 'Consultar Clientes':
-    clientes = supabase.table('Clientes').select('*').execute()
-    df_clientes = pd.DataFrame(clientes.data)
+#mostrar datos en la interfaz
+if not df_clientes.empty:
     st.write(df_clientes)
+else
+st.write("No hay clientes disponibles en la base de datos")
