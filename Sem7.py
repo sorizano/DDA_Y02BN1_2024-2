@@ -19,3 +19,20 @@ if not df_clientes.empty:
     st.write(df_clientes)
 else:
     st.write("No hay clientes disponibles en la base de datos")
+
+
+# Selección de operación
+option = st.selectbox(
+    '¿Qué operación desea realizar?',
+    ('Consultar Clientes', 'Consultar Productos', 'Generar Factura', 'Ver Facturas')
+)
+
+if option == 'Consultar Clientes':
+    clientes = supabase.table('clientes').select('*').execute()
+    df_clientes = pd.DataFrame(clientes.data)
+    st.write(df_clientes)
+
+elif option == 'Consultar Productos':
+    productos = supabase.table('productos').select('*').execute()
+    df_productos = pd.DataFrame(productos.data)
+    st.write(df_productos)
