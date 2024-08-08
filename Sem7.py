@@ -9,18 +9,6 @@ supabase: Client = create_client(url, key)
 
 st.title("Sistema de facturación")
 
-#Consulta de Clientes
-st.header("Lista de Clientes")
-clientes = supabase.table('clientes').select('*').execute()
-df_clientes = pd.DataFrame(clientes.data)
-
-#mostrar datos en la interfaz
-if not df_clientes.empty:
-    st.write(df_clientes)
-else:
-    st.write("No hay clientes disponibles en la base de datos")
-
-
 # Selección de operación
 option = st.selectbox(
     '¿Qué operación desea realizar?',
