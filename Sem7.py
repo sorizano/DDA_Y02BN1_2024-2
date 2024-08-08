@@ -17,5 +17,5 @@ df_clientes = pd.DataFrame(clientes.data)
 #mostrar datos en la interfaz
 if not df_clientes.empty:
     st.write(df_clientes)
-else
+else:
 st.write("No hay clientes disponibles en la base de datos")
