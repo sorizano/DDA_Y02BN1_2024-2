@@ -39,6 +39,6 @@ elif option == 'Generar Factura':
         product_qty[product] = qty
     if st.button('Generar Factura'):
         #Crear Factura
-        factura = supabase.table('facturas').insert({cliente_id: cliente_id}).execute()
+        factura = supabase.table('facturas').insert({'cliente_id': cliente_id}).execute()
         factura_id = factura.data[0]['id']
 
