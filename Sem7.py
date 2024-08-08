@@ -35,5 +35,5 @@ elif option == 'Generar Factura':
     selected_products = st.multiselect("Seleccione productos", df_productos['nombre'])
     product_qty = {}
     for product in selected_products:
-        qty = st.numer_input(f"Cantidad de {product}", min_value=1)
+        qty = st.number_input(f"Cantidad de {product}", min_value=1)
         product_qry[product] = qty
