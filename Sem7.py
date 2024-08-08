@@ -18,4 +18,4 @@ df_clientes = pd.DataFrame(clientes.data)
 if not df_clientes.empty:
     st.write(df_clientes)
 else:
-st.write("No hay clientes disponibles en la base de datos")
+    st.write("No hay clientes disponibles en la base de datos")
