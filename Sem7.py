@@ -36,4 +36,4 @@ elif option == 'Generar Factura':
     product_qty = {}
     for product in selected_products:
         qty = st.number_input(f"Cantidad de {product}", min_value=1)
-        product_qry[product] = qty
+        product_qty[product] = qty
