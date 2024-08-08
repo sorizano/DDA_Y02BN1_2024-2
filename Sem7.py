@@ -14,3 +14,8 @@ option = st.selectbox(
     '¿Qué operación desea realizar?',
     ('Consultar Clientes', 'Consultar Productos', 'Generar Factura', 'Ver Facturas')
 )
+
+if option == 'Consultar Clientes':
+    clientes = supabase.table('Clientes').select('*').execute()
+    df_clientes = pd.DataFrame(clientes.data)
+    st.write(df_clientes)
