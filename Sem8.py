@@ -23,9 +23,6 @@ def generate_pdf(students,student_count):
     pdf = FPDF()
     pdf.add_page()
 
-    #Agregar logo de la empresa desde la imagen descargada
-    pdf.image(logo_image, x=10, y=8, w=33)
-
     pdf.set_font("Arial", size=12)
     pdf.cell(200,10, txt="Reporte de Estudiantes", ln=True, align='C')
 
