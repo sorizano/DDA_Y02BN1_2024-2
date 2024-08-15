@@ -10,7 +10,7 @@ SUPABASE_URL = "https://dzrqlfnxxtompvovsiso.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cnFsZm54eHRvbXB2b3ZzaXNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI0NzMwMTUsImV4cCI6MjAzODA0OTAxNX0.j4JmBL6IKm1obWB29ytLOZq0_cIvZ8iRL3m3KSzZFQc"
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-logo_url = "https://taocperu.com/assets/img/taoc_peru_azul.png"  # URL del logo
+
 
 def get_students():
     response = supabase.table('students').select('*').execute()
@@ -55,3 +55,20 @@ st.title("Streamlit y Supabase")
 
 menu = ["Ver", "Agregar", "Actualizar", "Eliminar", "Generar Reporte"]
 choice = st.sidebar.selectbox("Menú", menu)
+
+if choice == "Ver":
+    st.subheader("Lista de estudiantes")
+    students = get_students()
+    student_count = count_students()
+    st.write(f"Cantidad total de estudiantes: {student_count}")
+    for student in students:
+        st.write(f"ID: {student['id']}, Nombre: {student['name']}, Edad: {student['age']}")
+
+elif choice == "Generar Reporte":
+    st.subheader("Generar Reporte en PDF")
+    students = get_students()
+    student_count = count_students()
+    logo_url = "https://taocperu.com/assets/img/taoc_peru_azul.png"  # URL del logo
+    generate_pdf(students, student_count, logo_url)
+    st.success("Reporte generado exitosamente")
+    download_pdf()
