@@ -1,6 +1,7 @@
 import streamlit as st
 from supabase import create_client, Client
 from fpdf import FPDF
+from datetime import datetime
 
 
 # Configurar Supabase
@@ -23,6 +24,11 @@ def generate_pdf(students, student_count):
 
     pdf.set_font("Arial", size=12)
     pdf.cell(200, 10, txt="Reporte de Estudiantes", ln=True, align='C')
+
+    #Obtener la fecha y hora actual
+    current_datetime = datetime.now.strftime("%Y-%m-%d %H:%M:%S")
+    pdf.set_font("Arial", size=10)
+    pdf.cell(200,10, txt=f"Generado el: {current_datetime}", ln=True, align='R')
 
     pdf.set_font("Arial", size=10)
     pdf.cell(200, 10, txt=f"Cantidad total de estudiantes: {student_count}", ln=True, align='L')
