@@ -68,7 +68,6 @@ elif choice == "Generar Reporte":
     st.subheader("Generar Reporte en PDF")
     students = get_students()
     student_count = count_students()
-    logo_url = "https://taocperu.com/assets/img/taoc_peru_azul.png"  # URL del logo
     generate_pdf(students, student_count, logo_url)
     st.success("Reporte generado exitosamente")
     download_pdf()
