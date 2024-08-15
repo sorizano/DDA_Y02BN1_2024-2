@@ -48,3 +48,10 @@ def generate_pdf(students,student_count, logo_url)
 def download_pdf():
     with open("reporte_estudiantes.pdf", "rb") as f:
         st.download_button('Descargar reporte en PDF', f, file_name="reporte_estudiantes.pdf")
+
+
+#Streamlit APP
+st.title("Streamlit y Supabase")
+
+menu = ["Ver", "Agregar", "Actualizar", "Eliminar", "Generar Reporte"]
+choice = st.sidebar.selectbox("Menú", menu)
