@@ -4,7 +4,6 @@ from fpdf import FPDF
 import requests
 from io import BytesIO
 
-logo_url = "https://taocperu.com/assets/img/taoc_peru_azul.png"
 
 #Configurar Supabase
 SUPABASE_URL = "https://dzrqlfnxxtompvovsiso.supabase.co"
@@ -20,11 +19,7 @@ def count_students():
     response = supabase.table('students').select('*', count='exact').execute()
     return response.count
 
-def generate_pdf(students,student_count, logo_url):
-    #descargar el logo desde una URL
-    response = requests.get(logo_url)
-    logo_image = BytesIO(response.content)
-
+def generate_pdf(students,student_count):
     pdf = FPDF()
     pdf.add_page()
 
@@ -68,6 +63,6 @@ elif choice == "Generar Reporte":
     st.subheader("Generar Reporte en PDF")
     students = get_students()
     student_count = count_students()
-    generate_pdf(students, student_count, logo_url)
+    generate_pdf(students, student_count)
     st.success("Reporte generado exitosamente")
     download_pdf()
