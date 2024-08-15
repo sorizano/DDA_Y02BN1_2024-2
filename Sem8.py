@@ -20,7 +20,7 @@ def count_students():
     response = supabase.table('students').select('*', count='exact').execute()
     return response.count
 
-def generate_pdf(students,student_count, logo_url)
+def generate_pdf(students,student_count, logo_url):
     #descargar el logo desde una URL
     response = requests.get(logo_url)
     logo_image = BytesIO(response.content)
