@@ -4,3 +4,4 @@ openpyxl==3.1.2
 supabase
 fpdf== 1.7.2
 requests==2.31.0
+pytz==2024.1
